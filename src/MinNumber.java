@@ -36,6 +36,12 @@ public class MinNumber extends MainClass{
 		mainClass.testMain()
 					.findElement(By.id("phSearchInput")).sendKeys("aa");
 		mainClass.driver.findElement(By.id("phSearchButton")).click();
+		WebElement element = null;
+		element = mainClass.driver.findElement(By.xpath("//label[contains(text(),'Матери')]/../../td/select"));
+		
+		String s = element.getAttribute("name");
+		System.out.println(s);
+		
 		Thread.sleep(5000);
 	 
 
