@@ -21,7 +21,7 @@ import org.openqa.selenium.support.ui.Select;
 public class MinNumber extends MainClass {
 
 	private String min = new String("100 000");
-	private String otherValue = "100 000"; // произвольное значение
+	private String otherValue = "100 000"; //
 
 	MainClass mainClass = new MainClass();
 
@@ -34,14 +34,12 @@ public class MinNumber extends MainClass {
 	public void testBoundaryMinConstrElement() throws InterruptedException {
 
 		mainClass.testMain();
-
-		WebElement selectElement = null;
+		
+		/*WebElement selectElement = null;
 		selectElement = mainClass.driver.findElement(By.tagName("select"));
 		Select select = new Select(selectElement);
-		select.selectByVisibleText("Каменный");
-		
-		//select.selectByVisibleText("Сезонное");
-		
+		select.selectByVisibleText("");*/
+				
 
 		Thread.sleep(5000);
 
