@@ -13,7 +13,7 @@ public class StructuralElements {
 	private String max = "5 000 000";
 	private String otherValueMax = "6 000 000";
 	private String min = "100 000";
-	private String otherValuMin = "99 999";
+	private String otherValueMin = "99 999";
 	private String otherValue = "350 000";
 	@Before
 	public void setUp() throws Exception {
@@ -34,17 +34,18 @@ public class StructuralElements {
 		// Проверка максимального значения
 		mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.CONTROL, Keys.HOME);
 		mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.SHIFT, Keys.END);
-		mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.BACK_SPACE, otherValue, Keys.ENTER);
+		mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.BACK_SPACE, otherValueMax, Keys.ENTER);
 		Thread.sleep(2000);
+		
 		String actualValueMax = mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).getAttribute("value");
-		assertEquals(otherValue, actualValueMax);
+		assertEquals(max, actualValueMax);
 		Thread.sleep(3000);
 		//------------------------------------------------------------
 		
 				// Проверка минимального значения
 				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.CONTROL, Keys.HOME);
 				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.SHIFT, Keys.END);
-				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.BACK_SPACE, otherValuMin, Keys.ENTER);
+				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]"+ "")).sendKeys(Keys.BACK_SPACE, otherValueMin, Keys.ENTER);
 				Thread.sleep(2000);
 				String actualValueMin = mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).getAttribute("value");
 				assertEquals(min, actualValueMin);
@@ -60,6 +61,14 @@ public class StructuralElements {
 				assertEquals(otherValue, actualValue);
 				Thread.sleep(3000);
 				
+		// Проверка CheckBox
+				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]/../input[contains(@type,'checkbox')]")).click();
+				Thread.sleep(1000);
+				assertTrue(mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).isEnabled());
+				Thread.sleep(1000);
+				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]/../input[contains(@type,'checkbox')]")).click();
+				assertTrue(mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).isDisplayed());
+				assertEquals(otherValue, actualValue);
 	}
 
 }

@@ -77,7 +77,7 @@ public class SumInsured {
 				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.BACK_SPACE, otherValue, Keys.ENTER);
 				mainClass.driver.findElement(By.xpath("//label [contains(text(),'Страховая сумма по')]/../../td/span")).click();
 				Thread.sleep(2000);
-				
+				System.out.println(mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).toString());
 				String actualValueOther = mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).getAttribute("value");
 				String actualValueSpanOther = mainClass.driver.findElement(By.xpath("//label [contains(text(),'Страховая сумма по')]/../../td/span")).getText();
 				System.out.println(actualValueOther);
