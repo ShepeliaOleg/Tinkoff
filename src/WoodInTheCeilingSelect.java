@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
-//���� ������ � �����������?
+// Есть дерево в перекрытиях?
 public class WoodInTheCeilingSelect {
 
 	MainClass mainClass = new MainClass();

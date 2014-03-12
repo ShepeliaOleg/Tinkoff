@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
-
+//Конструктивные элементы
 public class StructuralElements {
 
 	MainClass mainClass = new MainClass();

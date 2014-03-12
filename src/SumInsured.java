@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
-
+// Страховая сумма (без НС)
 public class SumInsured {
 
 	MainClass mainClass = new MainClass();
