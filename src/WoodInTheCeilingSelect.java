@@ -20,7 +20,7 @@ public class WoodInTheCeilingSelect {
 	}
 
 	@Test
-	public void test() {
+	public void test() throws InterruptedException {
 		
 		mainClass.testMain();
 		
