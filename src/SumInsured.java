@@ -17,6 +17,7 @@ public class SumInsured {
 	private String xpath = "//span/label[contains(text(),'Страховая сумма (без НС)')]/../../span";
 	private String otherValueMax = "100 000 000";
 	private String otherValueMin = "20";
+	private String otherValue = "5 000 000";
 	
 	@Before
 	public void setUp() throws Exception {
@@ -53,7 +54,7 @@ public class SumInsured {
 		Thread.sleep(3000);
 		//----------------------------------------------------------------------------
 		
-		// Проверка минимального значения значения
+		// Проверка минимального значения 
 				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.CONTROL, Keys.HOME);
 				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.SHIFT, Keys.END);
 				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.BACK_SPACE, otherValueMin, Keys.ENTER);
@@ -68,7 +69,24 @@ public class SumInsured {
 				Assert.assertEquals(actualValueMin, actualValueSpanMin); // проверка значения поля "Страховая сумма по покрытиям", которое равное значению поля "Страховая сумма (без НС)"
 						
 				Thread.sleep(3000);
-		
+		//----------------------------------------------------------------------------------------
+				
+				// Проверка произвольного значения
+				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.CONTROL, Keys.HOME);
+				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.SHIFT, Keys.END);
+				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.BACK_SPACE, otherValue, Keys.ENTER);
+				mainClass.driver.findElement(By.xpath("//label [contains(text(),'Страховая сумма по')]/../../td/span")).click();
+				Thread.sleep(2000);
+				
+				String actualValueOther = mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).getAttribute("value");
+				String actualValueSpanOther = mainClass.driver.findElement(By.xpath("//label [contains(text(),'Страховая сумма по')]/../../td/span")).getText();
+				System.out.println(actualValueOther);
+				System.out.println(actualValueSpanOther);
+				Assert.assertEquals(otherValue, actualValueOther); // проверка произвольного значения поля "Страховая сумма (без НДС)"
+				Assert.assertEquals(actualValueOther, actualValueSpanOther); // проверка значения поля "Страховая сумма по покрытиям", которое равное значению поля "Страховая сумма (без НС)"
+						
+				Thread.sleep(3000);
+				
 		
 	
 
