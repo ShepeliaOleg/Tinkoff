@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
-
+//Движимое имущество
 public class PersonalProperty {
 
 	MainClass mainClass = new MainClass();
