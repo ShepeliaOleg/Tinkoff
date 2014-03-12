@@ -6,7 +6,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-// Основные риски - рандомное проставления checkbox
+ // Основные риски - рандомное проставления checkbox
 public class TheMainRisksCheckbox {
 
 	MainClass mainClass = new MainClass();
