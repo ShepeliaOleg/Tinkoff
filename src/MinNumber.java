@@ -24,6 +24,8 @@ public class MinNumber extends MainClass {
 	private String otherValue = "100 000"; //
 
 	MainClass mainClass = new MainClass();
+	SumInsured insured = new SumInsured ();
+	WoodInTheCeilingSelect ceilingSelect = new WoodInTheCeilingSelect();
 
 	@After
 	public void tearDown() throws Exception {
@@ -40,7 +42,9 @@ public class MinNumber extends MainClass {
 		Select select = new Select(selectElement);
 		select.selectByVisibleText("");*/
 				
-
+		
+		insured.testMax();
+		ceilingSelect.test();
 		Thread.sleep(5000);
 
 	}

@@ -12,16 +12,18 @@ public class MainClass {
 	
 	protected WebDriver driver;
 	private String url;
-	public static void main (String [] s){
+	public static void main (String [] s) throws InterruptedException{
 		MainClass mainClass = new MainClass();
 		mainClass.testMain();
 	}
 
 	
-	public WebDriver testMain() {
+	public WebDriver testMain() throws InterruptedException {
 		driver = new FirefoxDriver ();
 		driver.manage().window().maximize();
+		Thread.sleep(1000);
 		driver.get("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z110000009UYeEAM");
+		System.out.println(driver.getCurrentUrl().toString());
 		driver.findElement(By.id("username")).sendKeys("yuliya.chyrva@customertimes.com.a2dev");
 		driver.findElement(By.id("password")).sendKeys("qaz123wsx");
 		driver.findElement(By.id("Login")).click();
