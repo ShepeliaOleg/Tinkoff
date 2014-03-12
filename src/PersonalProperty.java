@@ -1,22 +1,20 @@
 import static org.junit.Assert.*;
 
-import java.sql.Time;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 
-// Внутренняя отделка
-public class Trim {
-	
+
+public class PersonalProperty {
+
 	MainClass mainClass = new MainClass();
-	private String max = "2 000 000";
+	private String max = "1 000 000";
 	private String otherValueMax = "6 000 000";
-	private String min = "50 000";
+	private String min = "30 000";
 	private String otherValueMin = "9 000";
-	private String otherValue = "352 000";
+	private String otherValue = "856 000";
 	
 	@Before
 	public void setUp() throws Exception {
@@ -28,9 +26,10 @@ public class Trim {
 
 	@Test
 	public void test() throws Exception{
+		
 		mainClass.testMain();
 		
-		String elementId = mainClass.driver.findElement(By.xpath("//span/label[contains(text(),'Внутренняя отделка')]/../../span")).getAttribute("id");
+		String elementId = mainClass.driver.findElement(By.xpath("//span/label[contains(text(),'Движимое имущество')]/../../span")).getAttribute("id");
 		
 		String split [] = elementId.split(":");
 		
@@ -48,9 +47,8 @@ public class Trim {
 		// Проверка минимального значения
 				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.CONTROL, Keys.HOME);
 				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).sendKeys(Keys.SHIFT, Keys.END);
-				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]"+ "")).sendKeys(Keys.BACK_SPACE, otherValueMin);
+				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]"+ "")).sendKeys(Keys.BACK_SPACE, otherValueMin, Keys.ENTER);
 				Thread.sleep(2000);
-				mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]"+ "")).sendKeys(Keys.ENTER);
 				String actualValueMin = mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]")).getAttribute("value");
 				assertEquals(min, actualValueMin);
 				Thread.sleep(3000);
