@@ -22,8 +22,7 @@ public class MainClass {
 		driver = new FirefoxDriver ();
 		driver.manage().window().maximize();
 		Thread.sleep(1000);
-		driver.get("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z110000009UYeEAM");
-		System.out.println(driver.getCurrentUrl().toString());
+		driver.get("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z110000009e0UEAQ");
 		driver.findElement(By.id("username")).sendKeys("yuliya.chyrva@customertimes.com.a2dev");
 		driver.findElement(By.id("password")).sendKeys("qaz123wsx");
 		driver.findElement(By.id("Login")).click();
