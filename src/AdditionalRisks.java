@@ -13,6 +13,7 @@ public class AdditionalRisks {
 	private String valueCostsMin = "2 000";
 	private String valueCostsMax = "20 000";
 	private String costsMax = "15 000";
+	private String otherValueCosts = "9 000" ;
 	
 	
 	@Before
@@ -59,7 +60,7 @@ public class AdditionalRisks {
 			String actualValueCostsMax = mainClass.driver.findElement(By.xpath("//input[contains(@id,'"+splitOne[4]+":"+splitOne[5]+"')][contains(@style, 'display: inline-block')]")).getAttribute("value");
 			assertEquals(costsMax, actualValueCostsMax);
 			
-			
+			// Проверка произвольного значения поля "Расходы по замене дверных замков"
 		
 		//Страхование от несчастного случая
 		String elementIdTwo = mainClass.driver.findElement(By.xpath("//span/label[contains(text(),'Страхование от несчастного случая')]/../../span")).getAttribute("id");
