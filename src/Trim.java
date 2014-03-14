@@ -28,7 +28,7 @@ public class Trim {
 
 	@Test
 	public void test() throws Exception{
-		mainClass.testMain();
+		mainClass.testLogin();
 		
 		String elementId = mainClass.driver.findElement(By.xpath("//span/label[contains(text(),'Внутренняя отделка')]/../../span")).getAttribute("id");
 		

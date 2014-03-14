@@ -22,7 +22,7 @@ public class WoodInTheCeilingSelect {
 	@Test
 	public void test() throws InterruptedException {
 		
-		mainClass.testMain();
+		mainClass.testLogin();
 		
 				mainClass.driver.findElement(By.xpath("//label[contains(text(), 'Есть дерево в перекрытиях?')]/../../td/select/option[contains(text(), 'Да')]")).click();
 	

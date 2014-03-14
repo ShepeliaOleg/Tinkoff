@@ -27,7 +27,7 @@ public class RentSelect {
 	@Test
 	public void test() throws InterruptedException {
 
-		class1.testMain();
+		class1.testLogin();
 		
 		
 		class1.driver.findElement(By.xpath("//label[contains(text(), 'Аренда')]/../../td/select/option[contains(text(), 'Сдаю')]")).click();

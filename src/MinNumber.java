@@ -1,6 +1,7 @@
 import static org.junit.Assert.*;
 
 import java.awt.List;
+import java.util.ArrayList;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -35,16 +36,19 @@ public class MinNumber extends MainClass {
 	@Test
 	public void testBoundaryMinConstrElement() throws InterruptedException {
 
-		mainClass.testMain();
-		
+		mainClass.testLogin();
+		Thread.sleep(10000);
 		/*WebElement selectElement = null;
 		selectElement = mainClass.driver.findElement(By.tagName("select"));
 		Select select = new Select(selectElement);
 		select.selectByVisibleText("");*/
 				
-		
-		insured.testMax();
-		ceilingSelect.test();
+		String nameLable = "Стихийные бедствия";
+		ArrayList<WebElement> checkbox = (ArrayList<WebElement>)driver.findElement(By.xpath("//label[contains(text(), 'Стихийные бедствия')]/../../td/input[contains(@type, 'checkbox')]"));
+
+for (int i = 0; i < checkbox.size();i++){
+	System.out.println(checkbox.get(i).getAttribute("name").toString());
+}
 		Thread.sleep(5000);
 
 	}

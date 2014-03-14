@@ -31,7 +31,7 @@ public class SumInsured {
 	@Test
 	public void testMax() throws InterruptedException {
 		
-		mainClass.testMain();
+		mainClass.testLogin();
 		System.out.println(mainClass.driver.getCurrentUrl().toString());
 		
 		String elementId = mainClass.driver.findElement(By.xpath("//span/label[contains(text(),'Страховая сумма (без НС)')]/../../span")).getAttribute("id");

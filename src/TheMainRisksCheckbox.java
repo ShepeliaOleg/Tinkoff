@@ -21,7 +21,7 @@ public class TheMainRisksCheckbox {
 	@Test
 	public void test() throws Exception{
 	
-		mainClass.testMain();
+		mainClass.testLogin();
 
 		ArrayList<WebElement> chekbox = (ArrayList<WebElement>) mainClass.driver.findElements(By.xpath("//div/h3[contains(text(), 'Основные ри')]/../../div/table/tbody/tr/td/input[contains(@type, 'checkbox')]"));
 		for (int i = 0; i < chekbox.size(); i++){
