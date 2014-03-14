@@ -21,7 +21,7 @@ public class MainClass {
 	public static void main (String [] s) throws Exception{
 		MainClass mainClass = new MainClass();
 		mainClass.testLogin();
-		mainClass.testCheckbox();
+		mainClass.selectValue();
 	}
 
 	
@@ -29,10 +29,10 @@ public class MainClass {
 		driver = new FirefoxDriver ();
 		driver.manage().window().maximize();
 		Thread.sleep(1000);
-		driver.get("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z110000009e0UEAQ");
-		driver.findElement(By.id("username")).sendKeys("yuliya.chyrva@customertimes.com.a2dev");
-		driver.findElement(By.id("password")).sendKeys("qaz123wsx");
-		driver.findElement(By.id("Login")).click();
+		driver.get("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z110000009e0UEAQ"); //адрес URL
+		driver.findElement(By.id("username")).sendKeys("yuliya.chyrva@customertimes.com.a2dev"); // логин
+		driver.findElement(By.id("password")).sendKeys("qaz123wsx"); // пароль
+		driver.findElement(By.id("Login")).click(); // вход в систему
 		return driver;
 		
 	}
@@ -67,5 +67,15 @@ public class MainClass {
 		WebElement field = driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]"));
 		field.sendKeys(Keys.chord(Keys.CONTROL, "a"), minORmaxORother, Keys.ENTER);
 		
+	}
+
+	public void selectValue () throws Exception { // выбор елемента из выпадающего списка
+		String nameLabel = "Есть дерево в перекрытиях?"; // имя лейбла рядом из списком
+		String selectValue = "Да"; // имя елемента списка, который нужно выбрать
+		WebElement select = driver
+				.findElement(By
+						.xpath("//label[contains(text(), '"+nameLabel+"')]/../../td/select/option[contains(text(), '"
+								+ selectValue + "')]"));
+		select.click();
 	}
 }

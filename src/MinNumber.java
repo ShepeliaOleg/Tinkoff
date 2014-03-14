@@ -25,9 +25,7 @@ public class MinNumber extends MainClass {
 	private String otherValue = "100 000"; //
 
 	MainClass mainClass = new MainClass();
-	SumInsured insured = new SumInsured ();
-	WoodInTheCeilingSelect ceilingSelect = new WoodInTheCeilingSelect();
-
+	
 	@After
 	public void tearDown() throws Exception {
 		mainClass.driver.quit();
@@ -37,18 +35,16 @@ public class MinNumber extends MainClass {
 	public void testBoundaryMinConstrElement() throws InterruptedException {
 
 		mainClass.testLogin();
-		Thread.sleep(10000);
+		
 		/*WebElement selectElement = null;
 		selectElement = mainClass.driver.findElement(By.tagName("select"));
 		Select select = new Select(selectElement);
 		select.selectByVisibleText("");*/
 				
-		String nameLable = "Стихийные бедствия";
-		ArrayList<WebElement> checkbox = (ArrayList<WebElement>)driver.findElement(By.xpath("//label[contains(text(), 'Стихийные бедствия')]/../../td/input[contains(@type, 'checkbox')]"));
-
-for (int i = 0; i < checkbox.size();i++){
-	System.out.println(checkbox.get(i).getAttribute("name").toString());
-}
+		String selectValue = "Да";
+		WebElement e = mainClass.driver.findElement(By.xpath("//label[contains(text(), 'Есть дерево в перекрытиях?')]/../../td/select/option[contains(text(), '"+selectValue+"')]"));
+		e.click();
+		//select.click();
 		Thread.sleep(5000);
 
 	}
