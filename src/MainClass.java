@@ -22,6 +22,8 @@ public class MainClass {
 		MainClass mainClass = new MainClass();
 		mainClass.testLogin();
 		mainClass.selectValue();
+		mainClass.save();
+	
 	}
 
 	
@@ -77,5 +79,31 @@ public class MainClass {
 						.xpath("//label[contains(text(), '"+nameLabel+"')]/../../td/select/option[contains(text(), '"
 								+ selectValue + "')]"));
 		select.click();
+	}
+
+	public void save() {
+		ArrayList<WebElement> save = (ArrayList<WebElement>) driver
+				.findElements(By
+						.xpath("//input[contains(@type, 'button')][contains(@value, 'Сохранить')]"));
+		save.get(0).click();
+		
+	}
+	
+	public void list (){
+		String labelTable = "Доступные страны";
+		int index = 5; // индекс значения, которое будет выбрано в таблице(списке) 
+		ArrayList<WebElement> list = (ArrayList<WebElement>) driver
+				.findElements(By.xpath("//label[contains(text(), '"
+						+ labelTable + "')]/../../select/option"));
+		list.get(index).click();
+	}
+
+	public void date() {
+		String date = "20.03.2014";
+		String nameLabel = "Дата начала действия полиса";
+		WebElement label = driver.findElement(By.xpath("//label[contains(text(), '"+nameLabel+"')]/.."));
+		String split [] = label.getAttribute("id").split(":");
+		WebElement field = driver.findElement(By.xpath("//input[contains(@id, '"+split[4]+"')]"));
+		field.sendKeys(Keys.chord(Keys.CONTROL, "a"), date, Keys.ENTER);
 	}
 }

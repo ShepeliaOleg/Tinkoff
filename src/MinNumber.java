@@ -1,7 +1,11 @@
 import static org.junit.Assert.*;
 
 import java.awt.List;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -24,28 +28,35 @@ public class MinNumber extends MainClass {
 	private String min = new String("100 000");
 	private String otherValue = "100 000"; //
 
-	MainClass mainClass = new MainClass();
+	WebDriver driver;
 	
 	@After
 	public void tearDown() throws Exception {
-		mainClass.driver.quit();
+	driver.quit();
 	}
 
 	@Test
-	public void testBoundaryMinConstrElement() throws InterruptedException {
+	public void testBoundaryMinConstrElement() throws InterruptedException, ParseException {
 
-		mainClass.testLogin();
+		driver = new FirefoxDriver ();
+		driver.manage().window().maximize();
+		Thread.sleep(1000);
+		driver.get("https://c.cs18.visual.force.com/apex/complexProductCalculator?customerId=00111000008mL7yAAE&recordType=Travel"); //адрес URL
+		driver.findElement(By.id("username")).sendKeys("yuliya.chyrva@customertimes.com.a2dev"); // логин
+		driver.findElement(By.id("password")).sendKeys("qaz123wsx"); // пароль
+		driver.findElement(By.id("Login")).click(); // вход в систему
+		Thread.sleep(3000);
 		
-		/*WebElement selectElement = null;
-		selectElement = mainClass.driver.findElement(By.tagName("select"));
-		Select select = new Select(selectElement);
-		select.selectByVisibleText("");*/
-				
-		String selectValue = "Да";
-		WebElement e = mainClass.driver.findElement(By.xpath("//label[contains(text(), 'Есть дерево в перекрытиях?')]/../../td/select/option[contains(text(), '"+selectValue+"')]"));
-		e.click();
-		//select.click();
+		String labelTable = "Доступные страны";
+		int index = 0; // индекс значения, которое будет выбрано в таблице(списке) 
+		ArrayList<WebElement> list = (ArrayList<WebElement>) driver
+				.findElements(By.xpath("//label[contains(text(), '"
+						+ labelTable + "')]/../../select/option"));
+		list.get(index).click();
+		WebElement addButton = driver.findElement(By.xpath("//a/img[contains(@title, 'Add')]"));
+		addButton.click();
+		
 		Thread.sleep(5000);
-
+		
 	}
 }
