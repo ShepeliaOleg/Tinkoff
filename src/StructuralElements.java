@@ -25,7 +25,7 @@ public class StructuralElements {
 
 	@Test
 	public void test() throws Exception{
-		mainClass.testLogin();
+		mainClass.login("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z110000009e0UEAQ", "yuliya.chyrva@customertimes.com.a2dev", "qaz123wsx");
 		
 		String elementId = mainClass.driver.findElement(By.xpath("//span/label[contains(text(),'Конструктивные элементы')]/../../span")).getAttribute("id");
 		

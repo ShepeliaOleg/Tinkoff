@@ -22,7 +22,7 @@ public class WoodInTheCeilingSelect {
 	@Test
 	public void test() throws InterruptedException {
 		
-		mainClass.testLogin();
+		mainClass.login("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z110000009e0UEAQ", "yuliya.chyrva@customertimes.com.a2dev", "qaz123wsx");
 		
 				mainClass.driver.findElement(By.xpath("//label[contains(text(), 'Есть дерево в перекрытиях?')]/../../td/select/option[contains(text(), 'Да')]")).click();
 	

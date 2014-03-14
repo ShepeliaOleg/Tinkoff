@@ -21,7 +21,7 @@ public class TheMainRisksCheckbox {
 	@Test
 	public void test() throws Exception{
 	
-		mainClass.testLogin();
+		mainClass.login("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z110000009e0UEAQ", "yuliya.chyrva@customertimes.com.a2dev", "qaz123wsx");
 
 		ArrayList<WebElement> chekbox = (ArrayList<WebElement>) mainClass.driver.findElements(By.xpath("//div/h3[contains(text(), 'Основные ри')]/../../div/table/tbody/tr/td/input[contains(@type, 'checkbox')]"));
 		for (int i = 0; i < chekbox.size(); i++){
