@@ -23,7 +23,7 @@ public class MainClass {
 		mainClass.login("https://c.cs18.visual.force.com/apex/complexProductCalculator?customerId=00111000008mL7yAAE&recordType=Travel",
 						"yuliya.chyrva@customertimes.com.a2dev", "qaz123wsx");
 	mainClass.list("Доступные страны", 5);
-	mainClass.date("Дата подачи документов на визу", "20.03.2014");
+	mainClass.date("Дата подачи документов на визу", "Август", 2016, 3);
 	mainClass.selectValue("Валюта", "USD");
 	}
 
@@ -98,13 +98,22 @@ public class MainClass {
 		addButton.click();
 	}
 
-	public void date(String nameLabel/*имя лейбла рядом с полем установки даты*/, String date/*указать дату "ДД.ММ.ГГГГ"*/) throws Exception{ // установка даты
-		//String date = "20.03.2014"; // указать необходимое значение даты в формате ДД.ММ.ГГГГ
-		//String nameLabel = "Дата начала действия полиса"; // имя лейбла рядом с полем установки даты
+	public void date(String nameLabel/*имя лейбла*/, String monthName, int year, int index) throws Exception{ // установка даты
+		
 		WebElement label = driver.findElement(By.xpath("//label[contains(text(), '"+nameLabel+"')]/.."));
 		String split [] = label.getAttribute("id").split(":");
 		WebElement field = driver.findElement(By.xpath("//input[contains(@id, '"+split[4]+"')]"));
-		field.sendKeys(Keys.chord(Keys.CONTROL, "a"), date);
+		field.click();
+		
+		WebElement datePicker = driver.findElement(By.xpath("//div[contains(@id, 'datePicker')]"));
+		WebElement month = driver.findElement(By.xpath("//select[contains(@title, 'Месяц')]/option[contains(text(), '"+monthName+"')]"));
+		month.click();
+		
+		String yearS = Integer.toString(year);
+		WebElement yearN = driver.findElement(By.xpath("//select[contains(@title, 'Год')]/option[contains(text(), '"+yearS+"')]"));
+		yearN.click();
+		ArrayList<WebElement> day = (ArrayList<WebElement>)driver.findElements(By.xpath("//tr[contains(@id, 'calRow1')]/td"));
+		day.get(index).click();
 		
 	}
 }

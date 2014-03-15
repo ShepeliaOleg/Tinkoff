@@ -45,18 +45,25 @@ public class MinNumber extends MainClass {
 		driver.findElement(By.id("username")).sendKeys("yuliya.chyrva@customertimes.com.a2dev"); // логин
 		driver.findElement(By.id("password")).sendKeys("qaz123wsx"); // пароль
 		driver.findElement(By.id("Login")).click(); // вход в систему
-		Thread.sleep(3000);
-		
-		String labelTable = "Доступные страны";
-		int index = 0; // индекс значения, которое будет выбрано в таблице(списке) 
-		ArrayList<WebElement> list = (ArrayList<WebElement>) driver
-				.findElements(By.xpath("//label[contains(text(), '"
-						+ labelTable + "')]/../../select/option"));
-		list.get(index).click();
-		WebElement addButton = driver.findElement(By.xpath("//a/img[contains(@title, 'Add')]"));
-		addButton.click();
-		
 		Thread.sleep(5000);
+		
+		WebElement label = driver.findElement(By.xpath("//label[contains(text(), 'Дата подачи документов на визу')]/.."));
+		String split [] = label.getAttribute("id").split(":");
+		WebElement field = driver.findElement(By.xpath("//input[contains(@id, '"+split[4]+"')]"));
+		field.click();
+		
+		WebElement datePicker = driver.findElement(By.xpath("//div[contains(@id, 'datePicker')]"));
+		WebElement month = driver.findElement(By.xpath("//select[contains(@title, 'Месяц')]/option[contains(text(), 'Июнь')]"));
+		month.click();
+		WebElement year = driver.findElement(By.xpath("//select[contains(@title, 'Год')]/option[contains(text(), '2015')]"));
+		year.click();
+		ArrayList<WebElement> day = (ArrayList<WebElement>)driver.findElements(By.xpath("//tr[contains(@id, 'calRow1')]/td"));
+		
+		for (int i = 0; i < day.size(); i++){
+			System.out.println(day.get(i).getText());
+		}
+		day.get(4).click();
+		Thread.sleep(7000);
 		
 	}
 }
