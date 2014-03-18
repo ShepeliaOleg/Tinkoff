@@ -41,29 +41,26 @@ public class MinNumber extends MainClass {
 		driver = new FirefoxDriver ();
 		driver.manage().window().maximize();
 		Thread.sleep(1000);
-		driver.get("https://c.cs18.visual.force.com/apex/complexProductCalculator?customerId=00111000008mL7yAAE&recordType=Travel"); //адрес URL
-		driver.findElement(By.id("username")).sendKeys("yuliya.chyrva@customertimes.com.a2dev"); // логин
-		driver.findElement(By.id("password")).sendKeys("qaz123wsx"); // пароль
+		driver.get("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z11000000A7obEAC"); //адрес URL
+		driver.findElement(By.xpath("//input[contains(@id, 'username')]")).sendKeys("yuliya.chyrva@customertimes.com.a2dev"); // логин
+		driver.findElement(By.xpath("//input[contains(@id, 'password')]")).sendKeys("qaz123wsx"); // пароль
 		driver.findElement(By.id("Login")).click(); // вход в систему
 		Thread.sleep(5000);
 		
-		WebElement label = driver.findElement(By.xpath("//label[contains(text(), 'Дата подачи документов на визу')]/.."));
-		String split [] = label.getAttribute("id").split(":");
-		WebElement field = driver.findElement(By.xpath("//input[contains(@id, '"+split[4]+"')]"));
-		field.click();
+		WebElement select = driver
+				.findElement(By
+						.xpath("//label[contains(text(), 'Аренда?')]/../../td/select/option[contains(text(), 'Сдаю')]"));
+		select.click();
+		Thread.sleep(5000);
 		
-		WebElement datePicker = driver.findElement(By.xpath("//div[contains(@id, 'datePicker')]"));
-		WebElement month = driver.findElement(By.xpath("//select[contains(@title, 'Месяц')]/option[contains(text(), 'Июнь')]"));
-		month.click();
-		WebElement year = driver.findElement(By.xpath("//select[contains(@title, 'Год')]/option[contains(text(), '2015')]"));
-		year.click();
-		ArrayList<WebElement> day = (ArrayList<WebElement>)driver.findElements(By.xpath("//tr[contains(@id, 'calRow1')]/td"));
+		WebElement element = driver.findElement(By.xpath("//label[contains(text(), 'Страхование ваших расходов')]/../following-sibling::td/input[contains(@type, 'checkbox')]"));
+		element.click();
+		Thread.sleep(6000);
+		String element3 = driver.findElement(By.xpath("//span/label[contains(text(),'Расходы при потере арендной платы')]/../../span")).getAttribute("id");
 		
-		for (int i = 0; i < day.size(); i++){
-			System.out.println(day.get(i).getText());
-		}
-		day.get(4).click();
-		Thread.sleep(7000);
-		
+		String[] split = element3.split(":");
+		WebElement element4 = driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]"));
+		element4.isDisplayed();
+		element4.sendKeys(Keys.chord(Keys.CONTROL, "a"), "30000");
 	}
 }

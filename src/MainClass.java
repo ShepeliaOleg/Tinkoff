@@ -20,18 +20,18 @@ public class MainClass {
 	
 	public static void main (String [] s) throws Exception{
 		MainClass mainClass = new MainClass();
-		mainClass.login("https://c.cs18.visual.force.com/apex/complexProductCalculator?customerId=00111000008mL7yAAE&recordType=Travel",
+		mainClass.login("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z11000000A7obEAC",
 						"yuliya.chyrva@customertimes.com.a2dev", "qaz123wsx");
-	mainClass.list("Доступные страны", 5);
-	mainClass.date("Дата подачи документов на визу", "Август", 2016, 3);
-	mainClass.selectValue("Валюта", "USD");
+		mainClass.checkboxWithField("Внутренняя отделка");
+		mainClass.checkboxSelect("Неисправность сетей");
+		
 	}
 
 	
 	public void login(String url, String username, String password) throws InterruptedException { // вход в систему
 		driver = new FirefoxDriver ();
 		driver.manage().window().maximize();
-		Thread.sleep(1000);
+		Thread.sleep(3000);
 		driver.get(url); //адрес URL
 		driver.findElement(By.id("username")).sendKeys(username); // логин
 		driver.findElement(By.id("password")).sendKeys(password); // пароль
@@ -40,17 +40,17 @@ public class MainClass {
 		
 	}
 
-	public void fieldWithoutTheCheckbox (int cost/*будущее значение поля*/) throws Exception{ // поле без checkbox рядом
+	public void fieldWithoutTheCheckbox (int cost/*будущее значение поля*/, String label) throws Exception{ // поле без checkbox рядом
 	
 		String minORmaxORother = Integer.toString(cost); // приведение значения типа Int к типу String
-		WebElement field = driver.findElement(By.xpath("//label[contains(text(), 'Страховая сумма (без НС)')]/../../following-sibling::td/input[contains(@type, 'text')]"));
+		WebElement field = driver.findElement(By.xpath("//label[contains(text(), '"+label+"')]/../../following-sibling::td/input[contains(@type, 'text')]"));
 		field.sendKeys(Keys.chord(Keys.CONTROL, "a"), minORmaxORother, Keys.ENTER);
 		
 		Thread.sleep(2000);
 		
 	}
 	
-	public void testCheckbox (String nameLableOfBlock/*имя блока*/)throws Exception{ // поиск и отметка Checkbox в блоке
+	public void Checkbox (String nameLableOfBlock/*имя блока*/)throws Exception{ // поиск и отметка Checkbox в блоке
 		
 		ArrayList<WebElement> chekbox = (ArrayList<WebElement>) driver
 				.findElements(By
@@ -115,5 +115,18 @@ public class MainClass {
 		ArrayList<WebElement> day = (ArrayList<WebElement>)driver.findElements(By.xpath("//tr[contains(@id, 'calRow1')]/td"));
 		day.get(index).click();
 		
+	}
+
+	public void checkboxWithField (String label) throws Exception{ // отметка checkbox возле поля
+		WebElement labelId = driver.findElement(By.xpath("//span/label[contains(text(),'"+label+"')]/../../span"));
+		String split [] = labelId.getAttribute("id").toString().split(":");
+		WebElement field = driver.findElement(By.xpath("//input[contains(@name,'"+split[4]+":"+split[5]+"')][contains(@type, 'checkbox')]"));
+		field.click();
+		Thread.sleep(3000);
+	}
+
+	public void checkboxSelect (String label){ // отметка checkbox, который не открывает дополнительных полей
+		WebElement element = driver.findElement(By.xpath("//label[contains(text(), '"+label+"')]/../following-sibling::td/input[contains(@type, 'checkbox')]"));
+		element.click();
 	}
 }
