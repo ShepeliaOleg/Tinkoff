@@ -10,6 +10,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.internal.remote.SlavePool;
 
 
 public class MainClass {
@@ -20,11 +21,12 @@ public class MainClass {
 	
 	public static void main (String [] s) throws Exception{
 		MainClass mainClass = new MainClass();
-		mainClass.login("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z11000000A7obEAC",
+		mainClass.login("https://c.cs18.visual.force.com/apex/complexProductCalculator?customerId=00111000009hC2aAAE&recordType=Travel",
 						"yuliya.chyrva@customertimes.com.a2dev", "qaz123wsx");
-		mainClass.checkboxWithField("Внутренняя отделка");
-		mainClass.checkboxSelect("Неисправность сетей");
-		
+		Thread.sleep(5000);
+		mainClass.dateNew("Дата начала действия полиса", "Август", "2014", 10);
+		mainClass.dateNew("Дата подачи документов на визу", "Январь", "2016", 15);
+		mainClass.dateNew2("Дата окончания действия полиса", "Март", "2018", 5);
 	}
 
 	
@@ -33,6 +35,7 @@ public class MainClass {
 		driver.manage().window().maximize();
 		Thread.sleep(3000);
 		driver.get(url); //адрес URL
+		Thread.sleep(4000);
 		driver.findElement(By.id("username")).sendKeys(username); // логин
 		driver.findElement(By.id("password")).sendKeys(password); // пароль
 		driver.findElement(By.id("Login")).click(); // вход в систему
@@ -75,7 +78,7 @@ public class MainClass {
 		
 		WebElement select = driver
 				.findElement(By
-						.xpath("//label[contains(text(), '"+nameLabel+"')]/../../td/select/option[contains(text(), '"
+						.xpath("//label[contains(text(), '"+nameLabel+"')]/../../td[1]/select/option[contains(text(), '"
 								+ selectValue + "')]"));
 		select.click();
 	}
@@ -128,5 +131,71 @@ public class MainClass {
 	public void checkboxSelect (String label){ // отметка checkbox, который не открывает дополнительных полей
 		WebElement element = driver.findElement(By.xpath("//label[contains(text(), '"+label+"')]/../following-sibling::td/input[contains(@type, 'checkbox')]"));
 		element.click();
+	}
+
+	// заполнение поля у которого нет в структуре SPAN 
+	public void field1(String labelName, int number) {
+		String num = Integer.toString(number);
+		WebElement field = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../following-sibling::td[1]/input[contains(@type, 'text')]"));
+		field.sendKeys(Keys.chord(Keys.CONTROL, "a"), num);
+	}
+	
+	// отметка чек-бокса у которого в структуре есть SPAN
+	public void checkbox2 (String labelName) {
+		WebElement checkbox = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../../following-sibling::td[1]/input[contains(@type, 'checkbox')]"));
+		checkbox.click();
+	}
+	
+	// заполнение поля у которого в структуре есть SPAN
+	public void field2(String lableName, int number) {
+		String num = Integer.toString(number);
+		WebElement field = driver.findElement(By.xpath("//label[contains(text(), '"+lableName+"')]/../../following-sibling::td[1]/input[contains(@type, 'text')]"));
+		field.sendKeys(Keys.chord(Keys.CONTROL, "a"), num);
+		
+	}
+	
+	// отметка чек-бокса у которого нет в структуре нет SPAN
+	public void checkbox1(String labelName) {
+		WebElement checkbox = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../following-sibling::td[1]/input[contains(@type, 'checkbox')]"));
+		checkbox.click();
+		
+	}
+	
+	// выбор из выпадающего списка
+	public void select(String labelName, String option) {
+		WebElement select = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../following-sibling::td[1]/select/option[contains(text(), '"+option+"')]"));
+		select.click();
+	}
+	
+	// выбор из таблицы и добавление элемента в другую таблицу
+	public void selectTable(String labelName, String optionWithTable) {
+		WebElement select = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../following-sibling::select[1]/option[contains(text(), '"+optionWithTable+"')]"));
+		select.click();
+		WebElement addButton = driver.findElement(By.xpath("//img[contains(@title, 'Add')]"));
+		addButton.click();
+	}
+	
+	// установка даты в календаре, у которого в структуре есть SPAN
+	public void dateNew(String labelName, String month, String year, int dayIndex) {
+		WebElement field = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../../following-sibling::td[1]/span/input[contains(@type, 'text')]"));
+		field.click();
+		WebElement monthSelect = driver.findElement(By.xpath("//select[contains(@title, 'Месяц')]/option[contains(text(), '"+month+"')]"));
+		monthSelect.click();
+		WebElement yearSelect = driver.findElement(By.xpath("//select[contains(@title, 'Год')]/option[contains(text(), '"+year+"')]"));
+		yearSelect.click();
+		ArrayList<WebElement> daySelect = (ArrayList<WebElement>)driver.findElements(By.xpath("//td[contains(@class, 'weekday')]"));
+		daySelect.get(dayIndex).click();
+		
+	}
+	// установка даты в календаре, у которого в структуре нет SPAN
+	private void dateNew2 (String labelName, String month, String year, int dayIndex) {
+		WebElement field = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../following-sibling::td[1]/span/input[contains(@type, 'text')]"));
+		field.click();
+		WebElement monthSelect = driver.findElement(By.xpath("//select[contains(@title, 'Месяц')]/option[contains(text(), '"+month+"')]"));
+		monthSelect.click();
+		WebElement yearSelect = driver.findElement(By.xpath("//select[contains(@title, 'Год')]/option[contains(text(), '"+year+"')]"));
+		yearSelect.click();
+		ArrayList<WebElement> daySelect = (ArrayList<WebElement>)driver.findElements(By.xpath("//td[contains(@class, 'weekday')]"));
+		daySelect.get(dayIndex).click();
 	}
 }

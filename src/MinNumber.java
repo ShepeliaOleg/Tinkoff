@@ -28,39 +28,26 @@ public class MinNumber extends MainClass {
 	private String min = new String("100 000");
 	private String otherValue = "100 000"; //
 
-	WebDriver driver;
-	
+
+	MainClass mainClass = new MainClass();
 	@After
 	public void tearDown() throws Exception {
-	driver.quit();
+	
 	}
 
 	@Test
-	public void testBoundaryMinConstrElement() throws InterruptedException, ParseException {
+	public void testBoundaryMinConstrElement() throws Exception {
 
-		driver = new FirefoxDriver ();
-		driver.manage().window().maximize();
-		Thread.sleep(1000);
-		driver.get("https://cs18.salesforce.com/apex/complexProductCalculator?quotationId=a0Z11000000A7obEAC"); //адрес URL
-		driver.findElement(By.xpath("//input[contains(@id, 'username')]")).sendKeys("yuliya.chyrva@customertimes.com.a2dev"); // логин
-		driver.findElement(By.xpath("//input[contains(@id, 'password')]")).sendKeys("qaz123wsx"); // пароль
-		driver.findElement(By.id("Login")).click(); // вход в систему
-		Thread.sleep(5000);
+		mainClass.login("https://cs18.salesforce.com/console", 
+				"yuliya.chyrva@customertimes.com.a2dev", "qaz123wsx");
+		Thread.sleep(7000);
 		
-		WebElement select = driver
-				.findElement(By
-						.xpath("//label[contains(text(), 'Аренда?')]/../../td/select/option[contains(text(), 'Сдаю')]"));
-		select.click();
-		Thread.sleep(5000);
+		ArrayList<WebElement> e = (ArrayList<WebElement>) mainClass.driver.findElements(By.xpath("//button[contains(@class, '')]"));
+		for (int i = 0; i < e.size(); i++){
+			System.out.println(e.get(i).getAttribute("class").toString());
+		}
 		
-		WebElement element = driver.findElement(By.xpath("//label[contains(text(), 'Страхование ваших расходов')]/../following-sibling::td/input[contains(@type, 'checkbox')]"));
-		element.click();
-		Thread.sleep(6000);
-		String element3 = driver.findElement(By.xpath("//span/label[contains(text(),'Расходы при потере арендной платы')]/../../span")).getAttribute("id");
-		
-		String[] split = element3.split(":");
-		WebElement element4 = driver.findElement(By.xpath("//input[contains(@id,'"+split[4]+":"+split[5]+"')]"));
-		element4.isDisplayed();
-		element4.sendKeys(Keys.chord(Keys.CONTROL, "a"), "30000");
+		WebElement b = mainClass.driver.findElement(By.xpath("//em[contains(@class, 'x-btn-split')]/button"));
+		b.click();
 	}
 }
