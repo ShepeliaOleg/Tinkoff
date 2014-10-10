@@ -21,7 +21,8 @@ public class MainTest {
         waitForElement.waitFor(driver, "Марка");
         //car.goToTabCar(driver);
 
-        //car.fillInMandatoryField(driver, "Мощность двигателя (л.с.)", "111");
+        car.fillInMandatoryField(driver, "Мощность двигателя (л.с.)", "111");
+        car.checkSelectedFromMandatoryList(driver, "Мощность двигателя (л.с.)", "111");
         car.fillInDataField(driver, "Объем двигателя (куб. см)", "47");
         car.enterDate(driver, "Дата выдачи документа ТС", "24.07.1987");
         car.clickOnCheckboxWithFirstOfLabel(driver, "Сдается в прокат/аренду");

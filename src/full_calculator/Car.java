@@ -1,5 +1,6 @@
 package full_calculator;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -95,4 +96,24 @@ public class Car {
         WebElement field = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../following-sibling::td[1]/span/div/input"));
         field.sendKeys(Keys.chord(Keys.CONTROL, "a"), date);
     }
+
+    //Проверка обязательного инпутного поля (есть отметка)
+    public void checkSelectedFromMandatoryList (WebDriver driver, String nameLabel, String expectedResult){
+        WebElement field = driver.findElement(By.xpath("//label[contains(text(), '" + nameLabel + "')]/../" +
+                "following-sibling::td[1]/div/input[contains(@type, 'text')]"));
+        field.sendKeys(Keys.chord(Keys.CONTROL, "a"), expectedResult);
+        String actualResult = field.getAttribute("value");
+        Assert.assertEquals(expectedResult, actualResult);
+    }
+
+    //Проверка не обязательного инпутного поля (нет отметки)
+    public void checkSelectedFromDataField (WebDriver driver, String nameLabel, String expectedResult){
+        WebElement field = driver.findElement(By.xpath("//label[contains(text(), '" + nameLabel + "')]/../" +
+                "following-sibling::td[1]/input[contains(@type, 'text')]"));
+        field.sendKeys(Keys.chord(Keys.CONTROL, "a"), expectedResult);
+        String actualResult = field.getAttribute("value");
+        Assert.assertEquals(expectedResult, actualResult);
+    }
+
+
 }
