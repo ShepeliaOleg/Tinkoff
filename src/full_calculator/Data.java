@@ -5,7 +5,8 @@ package full_calculator;
  */
 public class Data {
 
-    public String username = "kirill.vnukov@customertimes.tcs.prod.com.bdev";
-    public String password = "qazwsx123";
-    public String url = "https://cs18.salesforce.com/apex/AutoProductCalculator?customerId=0011100000Z1Ex6AAF&region=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0";
+    public String username = "nikolay.pecherskiy@customertimes.com.buat";
+    public String password = "poqw0912";
+    //public String url = "https://cs18.salesforce.com/apex/AutoProductCalculator?customerId=0011100000aZvnfAAC&region=77";
+    public String url = "https://cs18.salesforce.com/apex/AutoProductCalculator?customerId=0011100000XG76sAAD&region=77";
 }

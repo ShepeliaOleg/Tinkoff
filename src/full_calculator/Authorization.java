@@ -19,7 +19,7 @@ public class Authorization {
         driver.findElement(By.id("username")).sendKeys(username); // логин
         driver.findElement(By.id("password")).sendKeys(password); // пароль
         driver.findElement(By.id("Login")).click(); // вход в систему
-        Thread.sleep(5000);
+       // Thread.sleep(5000);
 
     }
 
