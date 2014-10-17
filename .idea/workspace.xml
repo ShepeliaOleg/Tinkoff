@@ -2,30 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bff242d0-1b00-4721-a63a-57f1eed8f5cc" name="Default" comment="home page and javadoc">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/full_calculator_test/MainTest.java" />
-      <change type="DELETED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\full_calculator\MainTest.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/full_calculator/Car.java" afterPath="$PROJECT_DIR$/src/main/full_calculator/Car.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/full_calculator/ChoosePackage.java" afterPath="$PROJECT_DIR$/src/main/full_calculator/ChoosePackage.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/full_calculator/Driver.java" afterPath="$PROJECT_DIR$/src/main/full_calculator/Driver.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/full_calculator/HomePage.java" afterPath="$PROJECT_DIR$/src/main/full_calculator/HomePage.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/full_calculator_test/Test_Car.java" afterPath="$PROJECT_DIR$/src/main/full_calculator_test/Test_Car.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\ComplexProperty.iml" afterPath="$PROJECT_DIR$/complexproperty.iml" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\AdditionalRisks.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/AdditionalRisks.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\EngineeringEquipment.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/EngineeringEquipment.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\MainClass.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/MainClass.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\MinNumber.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/MinNumber.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\PersonalProperty.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/PersonalProperty.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\PropertyApartmentInApartmentHouseNotMoscow.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/PropertyApartmentInApartmentHouseNotMoscow.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\PropertyBuildingNotMoscow.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/PropertyBuildingNotMoscow.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\RentSelect.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/RentSelect.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\StructuralElements.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/StructuralElements.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\SumInsured.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/SumInsured.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\TheMainRisksCheckbox.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/TheMainRisksCheckbox.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\Trim.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/Trim.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\Calculator\WoodInTheCeilingSelect.java" afterPath="$PROJECT_DIR$/src/main/quick_calculator/WoodInTheCeilingSelect.java" />
-      <change type="MOVED" beforePath="E:\Job\Тинькофф\Test\complexproperty\src\main\full_calculator\Data.java" afterPath="$PROJECT_DIR$/src/main/full_calculator/DataForAuthorization.java" />
     </list>
     <ignored path="ComplexProperty.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -111,8 +88,8 @@
       <file leaf-file-name="Test_Car.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/full_calculator_test/Test_Car.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.81040895" vertical-offset="125" max-vertical-offset="782">
-              <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.65241635" vertical-offset="159" max-vertical-offset="765">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -283,46 +260,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="complexproperty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="complexproperty" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="complexproperty" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="complexproperty" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="full_calculator_test" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1059,8 +996,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/full_calculator_test/Test_Car.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.81040895" vertical-offset="125" max-vertical-offset="782">
-          <caret line="37" column="4" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.65241635" vertical-offset="159" max-vertical-offset="765">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
       </provider>

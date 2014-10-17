@@ -35,7 +35,6 @@ public class Test_Car {
     }
 
     @Test
-    
     public void checkField (){
         //car.checkSelectedFromMandatoryList(driver, "Мощность двигателя (л.с.)", "111");
         car.fillInMandatoryField(driver, "Мощность двигателя (л.с.)", "111");
