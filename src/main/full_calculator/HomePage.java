@@ -5,8 +5,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
-import java.util.List;
-
 /**
  * Created by New on 14.10.2014.
  */
@@ -30,7 +28,7 @@ public class HomePage {
         System.setProperty("webdriver.chrome.driver", "E:\\Job\\Тинькофф\\Test\\complexproperty\\src\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         Authorization authorization = new Authorization();
-        Data data = new Data();
+        DataForAuthorization data = new DataForAuthorization();
         authorization.login(driver, "https://cs18.salesforce.com/console", data.username, data.password);
         //authorization.login(driver, "https://cs18.salesforce.com/console", "kirill.vnukov@novaproject.com.dev", "qweqwe123");
         HomePage homePage = new HomePage();

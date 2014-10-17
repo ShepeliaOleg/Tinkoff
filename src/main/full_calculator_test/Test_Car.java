@@ -2,9 +2,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.browserlaunchers.locators.GoogleChromeLocator;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
  * Created by New on 10.10.2014.
@@ -12,7 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Test_Car {
 
     WebDriver driver;
-    Data data = new Data();
+    DataForAuthorization data = new DataForAuthorization();
     Authorization authorization = new Authorization();
     WaitForElement waitForElement = new WaitForElement();
     Car car = new Car();
@@ -37,6 +35,7 @@ public class Test_Car {
     }
 
     @Test
+    
     public void checkField (){
         //car.checkSelectedFromMandatoryList(driver, "Мощность двигателя (л.с.)", "111");
         car.fillInMandatoryField(driver, "Мощность двигателя (л.с.)", "111");

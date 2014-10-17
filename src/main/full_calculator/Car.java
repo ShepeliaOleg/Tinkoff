@@ -14,35 +14,66 @@ import java.util.ArrayList;
 public class Car {
 
 
-    public void goToTabCar (WebDriver driver){
+    /**
+     * Метод предназначен для перехода на вкладку "Транспортное средство"
+     * @param driver передать WebDriver
+     */
+    public void goToCarTab(WebDriver driver){
 
         WebElement tabOfCar = driver.findElement(By.xpath("//*[contains(text(), 'Транспортное средство')]"));
         tabOfCar.click();
     }
 
-    //Выбор из списка, обязательного для заполнения (есть отметка)
-    public void chooseFromMandatoryList(WebDriver driver, String nameLabel, String nameElement){
+    /**
+     * Метод предназначен для добавления новго транспортного средства
+     * @param driver передать WebDriver
+     */
+    public void addNewCar (WebDriver driver) throws InterruptedException {
+        WebElement addCar = driver.findElement(By.xpath("//*[contains(@value, 'Добавить транспортное средство')]"));
+        addCar.click();
+        Thread.sleep(5000);
+    }
+
+     /**
+     * Метод предназначен для выбора конкретных значений с обязательного для заполнения поля (есть соответствующая отметка возле поля)
+     * @param driver передать WebDriver
+     * @param nameLabel передать имя лейбла (название поля, над которым будет выполнятся действие)
+     * @param selectedValue передать стринговое значение, которое будет найдено в списке и выбрано
+     */
+    public void selectFromMandatoryField(WebDriver driver, String nameLabel, String selectedValue){
 
         WebElement selectedElement = driver.findElement(By.xpath("//label[contains(text(), '"+ nameLabel +"')]/../" +
-                "following-sibling::td[1]/div/select/option[contains(text(), '"+nameElement+"')]"));
+                "following-sibling::td[1]/div/select/option[contains(text(), '"+selectedValue+"')]"));
         selectedElement.click();
 
     }
 
-    //Выбор из списка, не обязательного для заполнения (нет отметки)
-    public void chooseFromDataList (WebDriver driver, String nameLabel, String nameElement){
+
+    /**
+     * Метод предназначен для выбора конкретных значений с не обязательного для заполнения поля (нет соответствующая отметка возле поля)
+     * @param driver передать WebDriver
+     * @param nameLabel передать имя лейбла (название поля, над которым будет выполнятся действие)
+     * @param selectedValue передать стринговое значение, которое будет найдено в списке и выбрано
+     */
+    public void selectFromNotMandatoryField(WebDriver driver, String nameLabel, String selectedValue){
 
         WebElement selectedElement = driver.findElement(By.xpath("//label[contains(text(), '"+ nameLabel +"')]/../" +
-                "following-sibling::td[1]/select/option[contains(text(), '"+ nameElement +"')]"));
+                "following-sibling::td[1]/select/option[contains(text(), '"+ selectedValue +"')]"));
         selectedElement.click();
     }
 
-    //Заполнение обязательного инпутного поля (есть отметка)
+
+    /**
+     * Метод предназначен для заполнения обязательного поля (поле типа input)
+     * @param driver передать WebDriver
+     * @param nameLabel передать имя лейбла (название поля, над которым будет выполнятся действие)
+     * @param value передать стринговое значение, которое будет введено в поле
+     */
     public void fillInMandatoryField (WebDriver driver, String nameLabel, String value){
 
         WebElement field = driver.findElement(By.xpath("//label[contains(text(), '" + nameLabel + "')]/../" +
                 "following-sibling::td[1]/div/input[contains(@type, 'text')]"));
-        field.sendKeys(Keys.chord(Keys.CONTROL, "A"), value);
+        field.sendKeys(Keys.chord(Keys.CONTROL, "a"), value);
 
         String actualResult = field.getAttribute("value");
         String expectedResult = value;
@@ -51,7 +82,14 @@ public class Car {
     }
 
     //Заполнение не обязательного инпутного поля (нет отметки)
-    public void fillInDataField (WebDriver driver, String nameLabel, String value){
+
+    /**
+     * Метод предназначен для заполнения не обязательного поля (поле типа input)
+     * @param driver передать WebDriver
+     * @param nameLabel передать имя лейбла (название поля, над которым будет выполнятся действие)
+     * @param value передать стринговое значение, которое будет введено в поле
+     */
+    public void fillInNotMandatoryField (WebDriver driver, String nameLabel, String value){
 
         WebElement field = driver.findElement(By.xpath("//label[contains(text(), '" + nameLabel + "')]/../" +
                 "following-sibling::td[1]/input[contains(@type, 'text')]"));
@@ -102,24 +140,6 @@ public class Car {
 
         WebElement field = driver.findElement(By.xpath("//label[contains(text(), '"+labelName+"')]/../following-sibling::td[1]/span/div/input"));
         field.sendKeys(Keys.chord(Keys.CONTROL, "a"), date);
-    }
-
-    //Проверка обязательного инпутного поля (есть отметка)
-    public void checkSelectedFromMandatoryList (WebDriver driver, String nameLabel, String expectedResult){
-        WebElement field = driver.findElement(By.xpath("//label[contains(text(), '" + nameLabel + "')]/../" +
-                "following-sibling::td[1]/div/input[contains(@type, 'text')]"));
-        field.sendKeys(Keys.chord(Keys.CONTROL, "a"), expectedResult);
-        String actualResult = field.getAttribute("value");
-        Assert.assertEquals(expectedResult, actualResult);
-    }
-
-    //Проверка не обязательного инпутного поля (нет отметки)
-    public void checkSelectedFromDataField (WebDriver driver, String nameLabel, String expectedResult){
-        WebElement field = driver.findElement(By.xpath("//label[contains(text(), '" + nameLabel + "')]/../" +
-                "following-sibling::td[1]/input[contains(@type, 'text')]"));
-        field.sendKeys(Keys.chord(Keys.CONTROL, "a"), expectedResult);
-        String actualResult = field.getAttribute("value");
-        Assert.assertEquals(expectedResult, actualResult);
     }
 
 

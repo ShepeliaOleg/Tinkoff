@@ -2,7 +2,7 @@
 /**
  * Created by New on 04.09.2014.
  */
-public class Data {
+public class DataForAuthorization {
 
     public String username = "nikolay.pecherskiy@customertimes.com.buat";
     public String password = "poqw0912";

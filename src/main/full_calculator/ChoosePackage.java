@@ -1,6 +1,5 @@
 
 
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,7 +14,7 @@ public class ChoosePackage {
 
     WebDriver driver;
     Authorization authorization = new Authorization();
-    Data data = new Data();
+    DataForAuthorization data = new DataForAuthorization();
 
 
     public void test (WebDriver driver, String lableName, int numberOfColumn) throws InterruptedException {
