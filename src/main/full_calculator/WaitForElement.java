@@ -15,7 +15,7 @@ public class WaitForElement {
      */
     public void waitFor (WebDriver driver, String nameElement) throws InterruptedException {
         if (driver.getPageSource().contains(nameElement) != true){
-          for (int i = 0; i < 50; i++)
+          for (int i = 0; i < 4; i++)
             Thread.sleep(2000);
         }
     }
